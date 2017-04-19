@@ -12,13 +12,15 @@ class CalculationsController < ApplicationController
 
     text_split_into_array = @text.split
 
+    spaces_removed = @text.gsub(" ", "")
+
     @word_count = text_split_into_array.length
 
     @character_count_with_spaces = @text.length
 
-    @character_count_without_spaces = "Replace this string with your answer."
+    @character_count_without_spaces = spaces_removed.length
 
-    @occurrences = "Replace this string with your answer."
+    @occurrences = text_split_into_array.count(@special_word)
 
     # ================================================================================
     # Your code goes above.
