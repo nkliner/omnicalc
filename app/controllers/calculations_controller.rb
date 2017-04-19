@@ -14,13 +14,21 @@ class CalculationsController < ApplicationController
 
     spaces_removed = @text.gsub(" ", "")
 
+    text_in_lowercase = @text.downcase
+
+    lowercase_punctuation_removed = text_in_lowercase.gsub(/[^a-z0-9\s]/i, "")
+
+    split_text = lowercase_punctuation_removed.split
+
+    special_word_lowercase = @special_word.downcase
+
     @word_count = text_split_into_array.length
 
     @character_count_with_spaces = @text.length
 
     @character_count_without_spaces = spaces_removed.length
 
-    @occurrences = text_split_into_array.count(@special_word)
+    @occurrences = split_text.count(special_word_lowercase)
 
     # ================================================================================
     # Your code goes above.
