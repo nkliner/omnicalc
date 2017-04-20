@@ -105,7 +105,15 @@ class CalculationsController < ApplicationController
 
     @range = @maximum - @minimum
 
-    @median = "X"
+    center = @count / 2
+
+    if @count.even?
+      median = (@sorted_numbers[center+1] + @numbers[center-1]) / 2
+    else
+      median = @sorted_numbers[center]
+    end
+
+    @median = median
 
     @sum = @numbers.sum
 
