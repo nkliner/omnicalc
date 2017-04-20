@@ -119,9 +119,19 @@ class CalculationsController < ApplicationController
 
     @mean = @sum / @count
 
-    @variance = "X"
+    mean = @mean
 
-    @standard_deviation = "X"
+      squared_diffs = []
+
+        @numbers.each do |number|
+          mean_diff = (number - mean)
+          squared_mean_diff = mean_diff ** 2
+          squared_diffs.push(squared_mean_diff)
+        end
+
+    @variance = squared_diffs.sum / squared_diffs.count
+
+    @standard_deviation = @variance ** 0.5
 
     @mode = "X"
 
